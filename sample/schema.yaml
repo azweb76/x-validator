@@ -1,9 +1,9 @@
-field1: !field
+'field[0-9]+': !field
   type: int
   required: true
-listfield: !field
+'listfield|listfield2': !field
   type: list
   required: true
   item:
-    sfield1: !field
+    'sfield[1,2]': !field
       type: int

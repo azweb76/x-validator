@@ -15,7 +15,7 @@ xvalidator validate --schema myfile.schema.yaml myfile.yaml
 
 *myfile.schema.yaml*
 ```yaml
-field1: !field
+'field[0-9]+': !field
   type: str
   required: true
   validation: ^[a-zA-Z0-9]+$
@@ -30,6 +30,7 @@ listfield:
 *myfile.yaml*
 ```yaml
 field1: test-value
+field2: test-value
 listfield:
   - sfield: 1
 ```

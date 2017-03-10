@@ -117,13 +117,24 @@ def validate(src, schema, path, errors):
             result[x] = True
             src_value = src[x]
 
-        validate_value(errors, sa, sa_path, sa_path_str, src_value)
+            validate_value(errors, sa, sa_path, sa_path_str, src_value)
+
     if src:
         for x in src:
-            if x not in schema:
-                x_path = path+[x]
-                x_path_str = '\\'.join(x_path)
-                errors.append('%s is not defined in this schema' % x_path_str)
+            src_value = src[x]
+            x_path = path+[x]
+            x_path_str = '\\'.join(x_path)
+            if x not in result:
+                found = False
+                for e in schema:
+                    if re.match(e, x) is not None:
+                        found = result[x] = True
+                        sa = schema[e]
+                        validate_value(errors, sa, x_path, x_path_str, src_value)
+                        break
+
+                if not found:
+                    errors.append('%s is not defined in this schema' % x_path_str)
 
 
 def validate_value(errors, sa, sa_path, sa_path_str, src_value):

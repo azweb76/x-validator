@@ -1,5 +1,7 @@
 field1: 2
-badfield: 2
+field2: 2
 listfield:
-  - sfield1: test
-  - sfield1: sdfsd
+  - sfield1: 1
+  - sfield2: 2
+listfield2:
+  - sfield1: 1
