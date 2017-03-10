@@ -1,0 +1,9 @@
+field1: !field
+  type: int
+  required: true
+listfield: !field
+  type: list
+  required: true
+  item:
+    sfield1: !field
+      type: int
